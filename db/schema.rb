@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20100713113845) do
+ActiveRecord::Schema.define(version: 20190224090318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "scopus_id", null: false
+    t.index ["scopus_id"], name: "index_organizations_on_scopus_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
