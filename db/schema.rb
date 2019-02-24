@@ -21,12 +21,6 @@ ActiveRecord::Schema.define(version: 20190224090318) do
     t.index ["scopus_id"], name: "index_organizations_on_scopus_id"
   end
 
-  create_table "scientists", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "second_name", null: false
-    t.string "middle_name"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
