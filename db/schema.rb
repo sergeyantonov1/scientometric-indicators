@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20100713113845) do
+ActiveRecord::Schema.define(version: 20190301092321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "organization_profiles", force: :cascade do |t|
+    t.string "profile_type", null: false
+    t.string "profile_id", null: false
+    t.integer "organization_id", null: false
+    t.index ["organization_id"], name: "index_organization_profiles_on_organization_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
