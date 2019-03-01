@@ -1,3 +1,3 @@
 module Enumeration
-  CITATIONS_DATABASES = %w(scopus woc elibrary).freeze
+  CITATIONS_DATABASES = %w[scopus woc elibrary].freeze
 end
