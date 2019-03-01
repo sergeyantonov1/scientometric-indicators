@@ -1,8 +1,6 @@
 class OrganizationProfile < ApplicationRecord
-  PROFILE_TYPES = %w(scopus wos elibrary).freeze
-
   validates :profile_type, :profile_id, :organization, presence: true
-  validates :profile_type, inclusion: { in: PROFILE_TYPES }
+  validates :profile_type, inclusion: { in: Enumeration::CITATIONS_DATABASES }
 
   belongs_to :organization
 end
