@@ -6,18 +6,8 @@ gem "pg"
 gem "rails", "5.1.6.1"
 
 # assets
-gem "autoprefixer-rails"
-gem "coffee-rails"
-gem "foundation-icons-sass-rails"
-gem "foundation-rails"
 gem "premailer-rails"
-gem "sass-rails", "~> 5.0.0", ">= 5.0.6"
-gem "uglifier", ">= 2.7.2"
-
-source "https://rails-assets.org" do
-  gem "rails-assets-jquery-ujs"
-  gem "rails-assets-jquery2"
-end
+gem "webpacker", ">= 4.0.x"
 
 # views
 gem "active_link_to"
