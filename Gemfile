@@ -34,6 +34,7 @@ gem "draper"
 gem "flamegraph"
 gem "google-analytics-rails"
 gem "health_check"
+gem "httparty"
 gem "interactor"
 gem "kaminari"
 gem "memory_profiler"
@@ -44,6 +45,7 @@ gem "rack-mini-profiler", require: false, git: "https://github.com/MiniProfiler/
 gem "responders"
 gem "rollbar"
 gem "seedbank"
+gem "sidekiq"
 gem "stackprof"
 
 group :staging, :production do

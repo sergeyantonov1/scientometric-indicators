@@ -18,18 +18,20 @@ ActiveRecord::Schema.define(version: 20190301103713) do
   create_table "author_profiles", force: :cascade do |t|
     t.string "profile_type", null: false
     t.string "profile_id", null: false
-    t.integer "h_index", null: false
-    t.integer "citations_count", null: false
-    t.integer "publications_count", null: false
+    t.integer "h_index"
+    t.integer "citations_count"
+    t.integer "publications_count"
     t.integer "author_id", null: false
     t.index ["author_id"], name: "index_author_profiles_on_author_id"
   end
 
   create_table "authors", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "second_name", null: false
+    t.string "first_name"
+    t.string "second_name"
     t.string "middle_name"
     t.integer "organization_id", null: false
+    t.string "orcid"
+    t.index ["orcid"], name: "index_authors_on_orcid"
     t.index ["organization_id"], name: "index_authors_on_organization_id"
   end
 
