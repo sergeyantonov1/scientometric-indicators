@@ -25,7 +25,7 @@ UNIVERITIES.each do |university|
     end
   end
 
-  @scopus_authors_response = Scopus.new(organization: "60070941").authors
+  @scopus_authors_response = Scopus.authors(organization_id: "60070941")
 
   while @scopus_authors_response.present? do
     puts "---------------------------------------------------------------------"

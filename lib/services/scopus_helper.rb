@@ -7,12 +7,12 @@ class ScopusHelper
     @params = params
   end
 
-  def parse_name
+  def parse_name(preferred_name, name_variant)
     name, surname = preferred_name["given-name"], preferred_name["surname"]
 
-    if invalid_data?(name) && invalid_data?(surname)
-      name = find_valid_data(name, "given-name")
-      surname = find_valid_data(surname, "surname")
+    if name_variant
+      name = find_valid_data(name, "given-name") if invalid_data?(name)
+      surname = find_valid_data(surname, "surname") if invalid_data?(surname)
     end
 
     [name&.split&.first, surname]
@@ -27,10 +27,20 @@ class ScopusHelper
   end
 
   def find_valid_data(data, type)
-    names = name_variant.map { |name| name[type] }
+    splitted_names = name_variant.map { |name| name[type]&.split }
 
-    names.each do |name|
-      data = name unless invalid_data?(name)
+    splitted_names.each do |splitted_name|
+      next unless splitted_name
+
+      if splitted_name.length == 1
+        name = splitted_name.first
+
+        return data = name unless invalid_data?(name)
+      else
+        splitted_name.each do |name|
+          return data = name unless invalid_data?(name)
+        end
+      end
     end
 
     data
