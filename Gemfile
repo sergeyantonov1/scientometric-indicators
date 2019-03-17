@@ -27,6 +27,7 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "chart-js-rails"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
@@ -45,6 +46,7 @@ gem "rack-mini-profiler", require: false, git: "https://github.com/MiniProfiler/
 gem "responders"
 gem "rollbar"
 gem "seedbank"
+gem "selectize-rails"
 gem "sidekiq"
 gem "stackprof"
 

@@ -19,4 +19,14 @@ class Scopus
       }
     )
   end
+
+  def self.sync_author(pid)
+    HTTParty.get(
+      "https://api.elsevier.com/content/search/author",
+      query: {
+        query: "AU-ID(#{pid})",
+        apiKey: ENV["SCOPUS_KEY"]
+      }
+    )
+  end
 end

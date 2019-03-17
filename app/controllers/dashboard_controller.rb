@@ -1,13 +1,27 @@
 class DashboardController < ApplicationController
   def index
-    @presenter = DashboardPresenter.new(
-      author_ids: params[:author_ids],
-      profile_types: params[:profile_types],
-      start_date: params[:start_date],
-      end_date: params[:end_date]
-    )
+    # profile_type
+    # profile_ids
+    # profiles 
+    # start_date
+    # end_date
 
-    respond_with @presenter
+    # generate presenter
+    #@presenter = DashboardPresenter.new(
+     # profile_type: dashboard_params[:profile_type],
+      #profile_ids: dashboard_params[:profile_ids],
+      #profiles: dashboard_params[:profiles],
+      #start_date: dashboard_params[:start_date],
+      #end_date: dashboard_params[:end_date]
+    #)
+
+    #respond_with @presenter
+  end
+
+  private
+
+  def dashboard_params
+    params[:dashboard]
   end
 end
 

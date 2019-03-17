@@ -82,6 +82,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chart-js-rails (0.1.6)
+      railties (> 3.1)
     choice (0.2.0)
     cliver (0.3.2)
     codeclimate-test-reporter (0.6.0)
@@ -367,6 +369,7 @@ GEM
       rake (>= 0.9, < 13)
       sass (~> 3.4.20)
     seedbank (0.4.0)
+    selectize-rails (0.12.6)
     shellany (0.0.1)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
@@ -456,6 +459,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   capybara
+  chart-js-rails
   codeclimate-test-reporter
   coffee-rails
   coffeelint
@@ -507,6 +511,7 @@ DEPENDENCIES
   sass-rails (~> 5.0.0, >= 5.0.6)
   scss_lint
   seedbank
+  selectize-rails
   shoulda-matchers
   sidekiq
   simple_form

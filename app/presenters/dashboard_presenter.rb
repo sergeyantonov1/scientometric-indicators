@@ -2,22 +2,61 @@ class DashboardPresenter
 
   attr_reader :author_ids, :profile_types, :start_date, :end_date
 
-  def initialize(author_ids, profile_types, start_date, end_date)
-    @author_ids = author_ids
-    @profile_types = profile_types
-    @start_date = start_date
-    @end_date = end_date
+  def initialize(params)
+    @profile_type = params[:profile_type]
+    @profile_ids = params[:profile_ids]
+    @profiles = params[:profiles]
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
   end
 
-  def profile_types
-    @profile_types
+  def date_range
+    (@start_date..@end_date).to_a
+  end
+
+  def clean_dataset
+    @dataset ||= []
+
+    add_publications
+    add_citations
+  end
+
+  private
+
+  def generate_dataset
+    GenerateDataset.call(
+      profile_type: profile_type,
+      profile_ids: profile_ids,
+      profiles: profiles,
+      start_date: start_date,
+      end_date: end_date
+    )
+  end
+
+  def random_color
+    "#" + SecureRandom.hex(3)
   end
 end
 
-@object = Object.new
-
 authors.each do |author|
   @object << author.publications # request to scopus
+
+  [{
+      label: 'Zuev Denis',
+      data: [10, 20, 30, 40],
+      type: 'line',
+    }, {
+      label: 'Mish',
+      data: [35, 40, 20, 10],
+      type: 'line'
+    }, {
+      label: 'Antonov',
+      data: [35, 40, 20, 10],
+      type: 'line'
+    }
+  ]
+
+  date_range
 
   # generate object
   # [
