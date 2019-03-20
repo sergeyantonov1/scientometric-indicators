@@ -5,7 +5,9 @@ class Author < ApplicationRecord
 
   belongs_to :organization
 
+  accepts_nested_attributes_for :profiles
+
   def full_name
-    first_name + " " + second_name
+    "#{first_name} #{second_name}"
   end
 end

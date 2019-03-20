@@ -27,6 +27,7 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "activeadmin"
 gem "chart-js-rails"
 gem "decent_decoration"
 gem "decent_exposure"
