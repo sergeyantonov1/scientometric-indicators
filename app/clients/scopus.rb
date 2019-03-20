@@ -1,30 +1,31 @@
 class Scopus
-  def self.authors(params)
+  def self.authors(oid)
     HTTParty.get(
       "https://api.elsevier.com/content/search/author/",
       query: {
-        query: "AF-ID(#{params[:organization_id]})SUBJAREA(MATH OR ENGI OR COMP OR MULT)",
+        query: "AF-ID(#{oid})SUBJAREA(MATH OR ENGI OR COMP OR MULT)",
         apiKey: ENV["SCOPUS_KEY"]
       }
     )
   end
 
-  def self.publications(params)
+  def self.publications(auid, start_date, end_date)
     HTTParty.get(
       "https://api.elsevier.com/content/search/scopus/",
       query: {
-        query: "AU-ID(#{params[:author_id]})",
+        query: "AU-ID(#{auid})",
         apiKey: ENV["SCOPUS_KEY"],
-        sort: "+coverDate"
+        sort: "+coverDate",
+        date: "#{start_date}-#{end_date}"
       }
     )
   end
 
-  def self.sync_author(pid)
+  def self.author(pid)
     HTTParty.get(
-      "https://api.elsevier.com/content/search/author",
+      "https://api.elsevier.com/content/author",
       query: {
-        query: "AU-ID(#{pid})",
+        author_id: pid,
         apiKey: ENV["SCOPUS_KEY"]
       }
     )

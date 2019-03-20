@@ -4,9 +4,12 @@
     include_blank: false
   = f.input :profiles, collection: Author.all.map { |a| [a.first_name, a.id] }
   = f.input :profile_ids
-  = f.input :start_year, collection: 1900..Time.current.year, include_blank: false
-  = f.input :end_year, collection: 1900..Time.current.year, include_blank: false
-  
+  = f.input :start_date, collection: 1900..Time.current.year, include_blank: false
+  = f.input :end_date, collection: 1900..Time.current.year, include_blank: false
+
   = f.button :submit, value: "Generate"
 
 canvas#myChart
+
+
+= javascript_tag "window.__DATA__ = { labels: #{@result&.labels.to_json}, datasets: #{@result&.datasets.to_json} }"

@@ -4,4 +4,8 @@ class Author < ApplicationRecord
   has_many :profiles, class_name: "AuthorProfile"
 
   belongs_to :organization
+
+  def full_name
+    first_name + " " + second_name
+  end
 end
