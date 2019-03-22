@@ -1,5 +1,5 @@
 class Author < ApplicationRecord
-  validates :organization, presence: true
+  validates :first_name, :second_name, :organization, presence: true
 
   has_many :profiles, class_name: "AuthorProfile"
 
