@@ -14,14 +14,16 @@ module Chart
       datasets = []
 
       raw_datasets.each do |r_d|
-        datasets << generate_dataset(raw_dataset: r_d, type: :citations)
-        datasets << generate_dataset(raw_dataset: r_d, type: :publications)
+        color = random_color
+
+        datasets << generate_dataset(raw_dataset: r_d, type: :citations, color: color)
+        datasets << generate_dataset(raw_dataset: r_d, type: :publications, color: color)
       end
 
       datasets
     end
 
-    def generate_dataset(raw_dataset:, type:)
+    def generate_dataset(raw_dataset:, type:, color:)
       data = []
 
       labels.each do |label|
@@ -31,8 +33,14 @@ module Chart
       {
         label: "#{raw_dataset[:full_name]} #{type}",
         data: data,
-        type: type == :citations ? "line" : "bar"
+        type: type == :citations ? "line" : "bar",
+        borderColor: color,
+        backgroundColor: "rgba(0, 0, 0, 0)"
       }
+    end
+
+    def random_color
+      "#%06x" % (rand * 0xffffff)
     end
   end
 end

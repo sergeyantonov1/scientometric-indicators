@@ -10,12 +10,20 @@ module ScopusClient
 
     private
 
+    def scopus_author_ids
+      AuthorProfile
+        .where(author: author_ids, profile_type: "scopus")
+        .pluck(:profile_id)
+    end
+
     def raw_datasets
       raw_datasets = []
 
-      author_ids.each do |auid|
+      scopus_author_ids.each do |auid|
         context.auid = auid
         context.response = Scopus.publications(auid, start_date, end_date)
+
+        raw_datasets << init_dataset && next if empty_result_error
 
         raw_datasets << raw_dataset
       end
@@ -37,6 +45,7 @@ module ScopusClient
 
     def add_response_data(raw_dataset)
       context.response["search-results"]["entry"].each do |entry|
+
         year = entry["prism:coverDate"].to_date.year
 
         raw_dataset[year][:citations] += entry["citedby-count"].to_i
@@ -69,6 +78,10 @@ module ScopusClient
       end
 
       nil
+    end
+
+    def empty_result_error
+      context.response["search-results"]["entry"].first["error"]
     end
   end
 end
