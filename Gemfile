@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "2.4.2"
 
 gem "pg"
-gem "rails", "5.1.6.1"
+gem "rails", "5.1.6.2"
 
 # assets
 gem "autoprefixer-rails"
@@ -27,6 +27,8 @@ gem "simple_form"
 gem "slim"
 
 # all other gems
+gem "activeadmin"
+gem "chart-js-rails"
 gem "decent_decoration"
 gem "decent_exposure"
 gem "devise"
@@ -34,6 +36,7 @@ gem "draper"
 gem "flamegraph"
 gem "google-analytics-rails"
 gem "health_check"
+gem "httparty"
 gem "interactor"
 gem "kaminari"
 gem "memory_profiler"
@@ -44,6 +47,8 @@ gem "rack-mini-profiler", require: false, git: "https://github.com/MiniProfiler/
 gem "responders"
 gem "rollbar"
 gem "seedbank"
+gem "selectize-rails"
+gem "sidekiq"
 gem "stackprof"
 
 group :staging, :production do
