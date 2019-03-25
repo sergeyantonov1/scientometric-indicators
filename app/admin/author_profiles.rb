@@ -1,7 +1,7 @@
 ActiveAdmin.register AuthorProfile do
   menu false
 
-  actions :create, :update, :destroy
+  actions :show, :create, :update, :destroy
 
   includes :author
 

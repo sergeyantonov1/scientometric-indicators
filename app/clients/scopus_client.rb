@@ -1,4 +1,4 @@
-class Scopus
+class ScopusClient
   def self.authors(oid)
     HTTParty.get(
       "https://api.elsevier.com/content/search/author/",
@@ -9,16 +9,16 @@ class Scopus
     )
   end
 
-  def self.publications(auid, start_date, end_date)
-    HTTParty.get(
-      "https://api.elsevier.com/content/search/scopus/",
-      query: {
-        query: "AU-ID(#{auid})",
-        apiKey: ENV["SCOPUS_KEY"],
-        sort: "+coverDate",
-        date: "#{start_date}-#{end_date}"
-      }
-    )
+  def self.publications(auid, start_date = nil, end_date = nil)
+    query = {
+      query: "AU-ID(#{auid})",
+      apiKey: ENV["SCOPUS_KEY"],
+      sort: "+coverDate"
+    }
+
+    query.merge!(date: "#{start_date}-#{end_date}") if start_date && end_date
+
+    HTTParty.get("https://api.elsevier.com/content/search/scopus/", query: query)
   end
 
   def self.author(pid)

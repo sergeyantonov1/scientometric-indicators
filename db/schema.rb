@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190320141726) do
+ActiveRecord::Schema.define(version: 20190325084551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +50,20 @@ ActiveRecord::Schema.define(version: 20190320141726) do
     t.string "profile_type", null: false
     t.string "profile_id", null: false
     t.integer "h_index"
-    t.integer "citations_count"
-    t.integer "publications_count"
     t.integer "author_id", null: false
     t.index ["author_id"], name: "index_author_profiles_on_author_id"
+    t.index ["profile_id", "profile_type"], name: "index_author_profiles_on_profile_id_and_profile_type"
+  end
+
+  create_table "author_publications_infos", force: :cascade do |t|
+    t.integer "publications_count", default: 0, null: false
+    t.integer "citations_count", default: 0, null: false
+    t.integer "author_id", null: false
+    t.string "year", null: false
+    t.string "profile_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_author_publications_infos_on_author_id"
   end
 
   create_table "authors", force: :cascade do |t|
@@ -71,6 +81,7 @@ ActiveRecord::Schema.define(version: 20190320141726) do
     t.string "profile_id", null: false
     t.integer "organization_id", null: false
     t.index ["organization_id"], name: "index_organization_profiles_on_organization_id"
+    t.index ["profile_id", "profile_type"], name: "index_organization_profiles_on_profile_id_and_profile_type"
   end
 
   create_table "organizations", force: :cascade do |t|

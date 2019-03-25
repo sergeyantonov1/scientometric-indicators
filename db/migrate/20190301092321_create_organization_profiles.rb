@@ -5,5 +5,7 @@ class CreateOrganizationProfiles < ActiveRecord::Migration[5.1]
       t.string :profile_id, null: false
       t.integer :organization_id, null: false, index: true
     end
+
+    add_index :organization_profiles, [:profile_id, :profile_type]
   end
 end

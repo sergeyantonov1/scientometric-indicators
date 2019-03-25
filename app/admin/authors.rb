@@ -21,6 +21,26 @@ ActiveAdmin.register Author do
     redirect_to dashboard_path(author_ids: ids, start_date: "2015", end_date: "2018")
   end
 
+  member_action :sync, method: :put do
+    result = Authors::Sync.call(author: resource)
+
+    redirect_to resource_path, notice: "Locked!"
+  end
+
+  controller do
+    def create
+      result = Authors::Create.call(author_params: permitted_params[:author])
+
+      super do |format|
+        if result.success?
+          format.html { redirect_to admin_author_path(resource) }
+        else
+          format.html { render :new }
+        end
+      end
+    end
+  end
+
   show do
     attributes_table do
       row :first_name
