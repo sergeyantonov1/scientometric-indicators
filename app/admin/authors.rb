@@ -18,7 +18,12 @@ ActiveAdmin.register Author do
     start_date: :datepicker,
     end_date:  :datepicker
   } do |ids, inputs|
-    redirect_to dashboard_path(author_ids: ids, start_date: "2015", end_date: "2018")
+
+    redirect_to dashboard_path(
+      author_ids: ids,
+      start_date: batch_action_params["start_date"],
+      end_date: batch_action_params["end_date"]
+    )
   end
 
   member_action :sync, method: :put do
@@ -39,6 +44,10 @@ ActiveAdmin.register Author do
           format.html { render :new }
         end
       end
+    end
+
+    def batch_action_params
+      JSON.parse(params["batch_action_inputs"].gsub('=>', ':'))
     end
   end
 
