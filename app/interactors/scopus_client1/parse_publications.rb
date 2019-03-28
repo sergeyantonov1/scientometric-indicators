@@ -21,7 +21,7 @@ module ScopusClient1
 
       scopus_author_ids.each do |auid|
         context.auid = auid
-        context.response = Scopus.publications(auid, start_date, end_date)
+        context.response = ScopusClient.publications(auid, start_date, end_date)
 
         raw_datasets << init_dataset && next if empty_result_error
 
