@@ -1,4 +1,4 @@
-module ScopusClient
+module ScopusClient1
   class ParsePublications
     include Interactor
 
