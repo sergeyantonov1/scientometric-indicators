@@ -30,8 +30,9 @@ ActiveAdmin.register Author do
   controller do
     def create
       result = Authors::Create.call(author_params: permitted_params[:author])
+      @author = result.author
 
-      super do |format|
+      respond_to do |format|
         if result.success?
           format.html { redirect_to admin_author_path(resource) }
         else
