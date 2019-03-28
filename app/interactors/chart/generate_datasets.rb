@@ -34,8 +34,7 @@ module Chart
         label: "#{raw_dataset[:full_name]} #{type}",
         data: data,
         type: type == :citations ? "line" : "bar",
-        borderColor: color,
-        backgroundColor: "rgba(0, 0, 0, 0)"
+        borderColor: color
       }
     end
 
