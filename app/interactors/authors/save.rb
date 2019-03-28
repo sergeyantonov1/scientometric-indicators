@@ -12,28 +12,27 @@ module Authors
     private
 
     def build_publications_infos
-      return unless publications_infos_attributes.present?
+      author.profiles.each do |profile|
+        publications_info_attributes = publications_info_attributes(profile)
 
-      author.author_publications_infos.build(publications_infos_attributes)
+        next unless publications_info_attributes.present?
+
+        profile.publications.build(publications_info_attributes)
+      end
     end
 
-    def publications_infos_attributes
-      publications_infos_attributes = {}
+    def publications_info_attributes(profile)
+      publications_info_attributes = []
 
-      publications_info.each do |profile_type, data|
-        next unless data.present?
-
-        data.each do |year, counts|
-          publications_infos_attributes.merge!({
-            year: year,
-            profile_type: profile_type,
-            publications_count: counts[:publications],
-            citations_count: counts[:citations]
-          })
-        end
+      publications_info[profile.profile_type].each do |year, counts|
+        publications_info_attributes << {
+          year: year,
+          publications_count: counts[:publications],
+          citations_count: counts[:citations]
+        }
       end
 
-      publications_infos_attributes
+      publications_info_attributes
     end
   end
 end

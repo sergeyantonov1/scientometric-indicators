@@ -5,12 +5,14 @@ module Authors
     delegate :author, :publications_info, to: :context
 
     def call
-      publications_info.each do |k, v|
-        AuthorPublicationsInfo.find_or_initialize_by(year: k, author: author, profile_type: profile.profile_type).tap do |info|
-          info.publications_count = v[:publications]
-          info.citations_count = v[:citations]
+      author.profiles.each do |profile|
+        publications_info[profile.profile_type].each do |year, counts|
+          PublicationsInfo.find_or_initialize_by(year: year, author_profile: profile).tap do |info|
+            info.publications_count = counts[:publications]
+            info.citations_count = counts[:citations]
 
-          info.save!
+            info.save!
+          end
         end
       end
     end

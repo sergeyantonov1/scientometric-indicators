@@ -26,10 +26,14 @@ ActiveAdmin.register Author do
     )
   end
 
+  action_item only: :show do
+    link_to "Sync Author", sync_admin_author_path, method: :put
+  end
+
   member_action :sync, method: :put do
     result = Authors::Sync.call(author: resource)
 
-    redirect_to resource_path, notice: "Locked!"
+    redirect_to resource_path, notice: "Author was successfully synced!"
   end
 
   controller do

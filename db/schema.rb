@@ -55,17 +55,6 @@ ActiveRecord::Schema.define(version: 20190325084551) do
     t.index ["profile_id", "profile_type"], name: "index_author_profiles_on_profile_id_and_profile_type"
   end
 
-  create_table "author_publications_infos", force: :cascade do |t|
-    t.integer "publications_count", default: 0, null: false
-    t.integer "citations_count", default: 0, null: false
-    t.integer "author_id", null: false
-    t.string "year", null: false
-    t.string "profile_type", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_author_publications_infos_on_author_id"
-  end
-
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "second_name"
@@ -86,6 +75,16 @@ ActiveRecord::Schema.define(version: 20190325084551) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
+  end
+
+  create_table "publications_infos", force: :cascade do |t|
+    t.integer "publications_count", default: 0, null: false
+    t.integer "citations_count", default: 0, null: false
+    t.integer "author_profile_id", null: false
+    t.string "year", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_profile_id"], name: "index_publications_infos_on_author_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
