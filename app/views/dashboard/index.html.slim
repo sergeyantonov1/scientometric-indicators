@@ -1,3 +1,4 @@
-canvas#myChart
+= simple_form_for :dashboard, method: :get do |f|
+  = f.input :author_ids, collection: selectable_authors, input_html: { multiple: true, id: "select-authors" }
 
-= javascript_tag "window.__DATA__ = { labels: #{@result&.labels.to_json}, datasets: #{@result&.datasets.to_json} }"
+  = f.submit

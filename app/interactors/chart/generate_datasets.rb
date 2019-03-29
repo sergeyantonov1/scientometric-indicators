@@ -5,10 +5,26 @@ module Chart
     delegate :raw_datasets, :labels, to: :context
 
     def call
+      authors = Author.where(id: author_ids)
+
+      authors.each do |author|
+        pr = author.profiles.where(profile_type: "scopus")&.first
+
+        generate_dataset(pr)
+      end
+
+
       context.datasets = handle_datasets
     end
 
     private
+
+    def generate_dataset(profile)
+      profile.publications.each do |publiction|
+        labels.each do |label|
+        end
+      end
+    end
 
     def handle_datasets
       datasets = []

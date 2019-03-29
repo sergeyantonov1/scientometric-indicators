@@ -11,5 +11,7 @@
 #= require charts
 #= require foundation
 #= require current_user
+#= require multiselect
+#= require dropdown
 #= require_tree ../templates
 #= require_tree .
