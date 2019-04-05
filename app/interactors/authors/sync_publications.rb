@@ -10,16 +10,21 @@ module Authors
 
     def call
       author.profiles.each do |pr|
-        data = send("sync_#{pr.profile_type}_publications", pr)
-
-        publications_info[pr.profile_type] = data
+        publications_info[pr.profile_type] =
+          send("sync_#{pr.profile_type}_publications", pr)
       end
     end
 
     private
 
     def sync_scopus_publications(profile)
-      Scopus::ParsePublications.call(profile: profile).publications_info
+      Scopus::ParsePublications.call(profile: profile).profile_publications
+    end
+
+    def sync_woc_publications(profile)
+    end
+
+    def sunc_elibrary_publications(profile)
     end
   end
 end

@@ -1,7 +1,21 @@
-= simple_form_for :dashboard, method: :get do |f|
-  = f.input :author_ids, collection: selectable_authors, input_html: { multiple: true, id: "select-authors" }
-  = f.input :start_date, collection: 1900..Time.new.year, include_blank: false
-  = f.input :end_date, collection: 1900..Time.new.year, include_blank: false
-  = f.input :profile_type, collection: Enumeration::CITATIONS_DATABASES, include_blank: false
+.container style="margin: 0 100px"
+  = simple_form_for :dashboard, method: :get do |f|
+    = f.input :author_ids,
+      collection: selectable_authors,
+      input_html: { multiple: true, id: "select-authors" }
+    = f.input :start_date,
+      collection: 1900..Time.new.year,
+      include_blank: false,
+      selected: 0
+    = f.input :end_date,
+      collection: 1900..Time.new.year,
+      include_blank: false,
+      selected: 0
+    = f.input :profile_type, collection: Enumeration::CITATIONS_DATABASES, include_blank: false
 
-  = f.submit
+    = f.submit "Generate chart", class: "button"
+
+  - if @result
+    canvas#myChart
+
+    = javascript_tag "window.__DATA__ = { labels: #{@result.labels.to_json}, datasets: #{@result.datasets.to_json} }"

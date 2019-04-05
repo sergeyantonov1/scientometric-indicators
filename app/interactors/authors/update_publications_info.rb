@@ -5,6 +5,12 @@ module Authors
     delegate :author, :publications_info, to: :context
 
     def call
+      update_publications_info
+    end
+
+    private
+
+    def update_publications_info
       author.profiles.each do |profile|
         publications_info[profile.profile_type].each do |year, counts|
           PublicationsInfo.find_or_initialize_by(year: year, author_profile: profile).tap do |info|
