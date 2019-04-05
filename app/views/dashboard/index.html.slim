@@ -10,12 +10,12 @@
     = f.input :end_date,
       collection: 1900..Time.new.year,
       include_blank: false,
-      selected: 0
+      selected: Time.new.year
     = f.input :profile_type, collection: Enumeration::CITATIONS_DATABASES, include_blank: false
 
     = f.submit "Generate chart", class: "button"
 
-  - if @result
+  - if @datasets
     canvas#myChart
 
-    = javascript_tag "window.__DATA__ = { labels: #{@result.labels.to_json}, datasets: #{@result.datasets.to_json} }"
+    = javascript_tag "window.__DATA__ = { labels: #{@datasets.labels.to_json}, datasets: #{@datasets.datasets.to_json} }"

@@ -3,7 +3,8 @@ class DashboardController < ApplicationController
   expose :datasets, :fetch_datasets
 
   def index
-    if fetch_datasets.success?
+    if fetch_datasets&.success?
+      @datasets = fetch_datasets
     end
   end
 
