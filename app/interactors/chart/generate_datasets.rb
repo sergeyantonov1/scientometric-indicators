@@ -2,44 +2,27 @@ module Chart
   class GenerateDatasets
     include Interactor
 
-    delegate :raw_datasets, :labels, to: :context
+    delegate :datasets, :labels, :author_ids, :profile_type, to: :context
+
+    before do
+      context.datasets = []
+    end
 
     def call
-      context.datasets = handle_datasets
+      authors.each do |author|
+        context.datasets = Chart::GenerateDataset.call(
+          author: author,
+          labels: labels,
+          datasets: datasets,
+          profile_type: profile_type
+        ).datasets
+      end
     end
 
     private
 
-    def handle_datasets
-      datasets = []
-
-      raw_datasets.each do |r_d|
-        color = random_color
-
-        datasets << generate_dataset(raw_dataset: r_d, type: :citations, color: color)
-        datasets << generate_dataset(raw_dataset: r_d, type: :publications, color: color)
-      end
-
-      datasets
-    end
-
-    def generate_dataset(raw_dataset:, type:, color:)
-      data = []
-
-      labels.each do |label|
-        data << raw_dataset[label][type]
-      end
-
-      {
-        label: "#{raw_dataset[:full_name]} #{type}",
-        data: data,
-        type: type == :citations ? "line" : "bar",
-        borderColor: color
-      }
-    end
-
-    def random_color
-      "#%06x" % (rand * 0xffffff)
+    def authors
+      Author.where(id: author_ids)
     end
   end
 end

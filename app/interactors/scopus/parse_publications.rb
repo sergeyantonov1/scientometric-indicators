@@ -2,19 +2,19 @@ module Scopus
   class ParsePublications
     include Interactor
 
-    delegate :profile, :publications_info, to: :context
+    delegate :profile, :profile_publications, to: :context
 
     before do
-      context.publications_info = {}
+      context.profile_publications = {}
     end
 
     def call
-      parse_publications
+      parse_profile_publications
     end
 
     private
 
-    def parse_publications
+    def parse_profile_publications
       response = ScopusClient.publications(profile.profile_id)
 
       while response do
@@ -29,10 +29,10 @@ module Scopus
     def parse_response(response)
       response["search-results"]["entry"].each do |entry|
         year = entry["prism:coverDate"].to_date.year
-        publications_info[year] = { citations: 0, publications: 0 } unless publications_info.key?(year)
+        profile_publications[year] = { citations: 0, publications: 0 } unless profile_publications.key?(year)
 
-        publications_info[year][:citations] += entry["citedby-count"].to_i
-        publications_info[year][:publications] += 1
+        profile_publications[year][:citations] += entry["citedby-count"].to_i
+        profile_publications[year][:publications] += 1
       end
     end
 

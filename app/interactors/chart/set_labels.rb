@@ -5,6 +5,8 @@ module Chart
     delegate :start_date, :end_date, to: :context
 
     def call
+      context.fail! if start_date > end_date
+
       context.labels = labels
     end
 

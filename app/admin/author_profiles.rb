@@ -19,6 +19,7 @@ ActiveAdmin.register AuthorProfile do
     attributes_table do
       row :profile_type
       row :profile_id
+      row :h_index
     end
 
     panel "Publications" do

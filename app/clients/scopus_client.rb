@@ -30,4 +30,14 @@ class ScopusClient
       }
     )
   end
+
+  def self.author_metrics(pid)
+    HTTParty.get(
+      "https://api.elsevier.com/content/author/author_id/#{pid}",
+      query: {
+        view: "metrics",
+        apiKey: ENV["SCOPUS_KEY"]
+      }
+    )
+  end
 end
