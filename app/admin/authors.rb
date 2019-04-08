@@ -26,7 +26,7 @@ ActiveAdmin.register Author do
     )
   end
 
-  action_item only: :show do
+  action_item :sync, only: :show do
     link_to "Sync Author", sync_admin_author_path, method: :put
   end
 
