@@ -3,14 +3,6 @@
     = f.input :author_ids,
       collection: selectable_authors,
       input_html: { multiple: true, id: "select-authors" }
-    = f.input :start_date,
-      collection: 1900..Time.new.year,
-      include_blank: false,
-      selected: 0
-    = f.input :end_date,
-      collection: 1900..Time.new.year,
-      include_blank: false,
-      selected: Time.new.year
     = f.input :profile_type, collection: Enumeration::CITATIONS_DATABASES, include_blank: false
 
     = f.submit "Generate chart", class: "button"

@@ -19,8 +19,8 @@ class DashboardController < ApplicationController
   end
 
   def dataset_params_exists?
-    dashboard_params && dashboard_params[:author_ids] &&
-      dashboard_params[:start_date] && dashboard_params[:end_date] &&
+    dashboard_params &&
+      dashboard_params[:author_ids] &&
       dashboard_params[:profile_type]
   end
 
@@ -28,8 +28,6 @@ class DashboardController < ApplicationController
     return unless dataset_params_exists?
 
     @fetch_datasets ||= Chart::FetchDatasets.call(
-      start_date: dashboard_params[:start_date],
-      end_date: dashboard_params[:end_date],
       author_ids: dashboard_params[:author_ids],
       profile_type: dashboard_params[:profile_type]
     )

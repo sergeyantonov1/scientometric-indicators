@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   get :dashboard, to: "dashboard#index"
 
-  root to: "pages#home"
+  root to: "dashboard#index"
 end

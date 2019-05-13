@@ -2,10 +2,10 @@ module Chart
   class SetLabels
     include Interactor
 
-    delegate :start_date, :end_date, to: :context
+    # delegate :start_date, :end_date, to: :context
 
     def call
-      context.fail! if start_date > end_date
+      # context.fail! if start_date > end_date
 
       context.labels = labels
     end
@@ -13,7 +13,11 @@ module Chart
     private
 
     def labels
-      (start_date.to_i..end_date.to_i).to_a
+      ((current_year - 9)..current_year).to_a
+    end
+
+    def current_year
+      Date.current.year
     end
   end
 end
