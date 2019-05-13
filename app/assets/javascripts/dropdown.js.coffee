@@ -5,10 +5,6 @@ class Dropdown
     @_init()
 
   _init: ->
-    @$el.multiselect
-      columns: 1
-      search: true
-      placeholder: "Select authors"
+    @$el.dropdown()
 
-
-new Dropdown(el) for el in $("#select-authors")
+new Dropdown(el) for el in $(".ui.dropdown'")
