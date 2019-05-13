@@ -7,4 +7,4 @@ class Dropdown
   _init: ->
     @$el.dropdown()
 
-new Dropdown(el) for el in $(".ui.dropdown'")
+new Dropdown(el) for el in $(".ui.dropdown")

@@ -4,14 +4,13 @@
 # It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 # the compiled file.
 #
-#= require jquery2
+#= require jquery
+#= require jquery_ujs
 #= require Chart.min
 #= require charts
 #= require foundation
 #= require current_user
-#= require semantic-ui
-#= require semantic-ui/modal
-#= require semantic-ui/dropdown
 #= require dropdown
+#= require semantic-ui
 #= require_tree ../templates
 #= require_tree .

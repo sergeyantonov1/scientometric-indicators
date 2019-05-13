@@ -48,7 +48,6 @@ gem "responders"
 gem "rollbar"
 gem "seedbank"
 gem "semantic-ui-sass"
-gem "selectize-rails"
 gem "sidekiq"
 gem "stackprof"
 
