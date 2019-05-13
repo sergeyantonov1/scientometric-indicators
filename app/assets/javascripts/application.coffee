@@ -5,7 +5,6 @@
 # the compiled file.
 #
 #= require jquery2
-#= require jquery-ujs
 #= require selectize
 #= require Chart.min
 #= require charts
@@ -13,5 +12,9 @@
 #= require current_user
 #= require multiselect
 #= require dropdown
+#= require semantic-ui
+#= require semantic-ui/modal
+#= require semantic-ui/dropdown
+#= require dropdown_new
 #= require_tree ../templates
 #= require_tree .

@@ -15,7 +15,10 @@ class DashboardController < ApplicationController
   end
 
   def fetch_selectable_authors
-    Author.all.map { |a| [a.full_name, a.id] }
+    Author
+      .order(:second_name, :first_name)
+      .map { |author| [author.full_name, author.id] }
+      .append(["Select authors", ""])
   end
 
   def dataset_params_exists?

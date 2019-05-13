@@ -8,6 +8,6 @@ class Author < ApplicationRecord
   validates :first_name, :second_name, :organization, presence: true
 
   def full_name
-    "#{first_name} #{second_name}"
+    "#{second_name} #{first_name}"
   end
 end

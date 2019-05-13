@@ -1,11 +1,14 @@
 .container style="margin: 0 100px"
   = simple_form_for :dashboard, method: :get do |f|
     = f.input :author_ids,
-      collection: selectable_authors,
-      input_html: { multiple: true, id: "select-authors" }
-    = f.input :profile_type, collection: Enumeration::CITATIONS_DATABASES, include_blank: false
+        collection: selectable_authors,
+        input_html: { class:"ui fluid dropdown selection multiple", multiple: true }
+    = f.input :profile_type,
+      collection: Enumeration::CITATIONS_DATABASES,
+      include_blank: false,
+      input_html: { class:"ui fluid dropdown selection" }
 
-    = f.submit "Generate chart", class: "button"
+    = f.submit "Generate chart", class: "ui primary button"
 
   - if @datasets
     canvas#myChart
