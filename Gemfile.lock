@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.1.6.2)
       actionpack (= 5.1.6.2)
@@ -508,7 +509,6 @@ DEPENDENCIES
   interactor
   jasmine (> 2.0)
   jasmine-jquery-rails
-  jquery-rails
   kaminari
   launchy
   letter_opener
