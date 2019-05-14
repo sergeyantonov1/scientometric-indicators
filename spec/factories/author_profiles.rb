@@ -4,7 +4,5 @@ FactoryGirl.define do
     profile_id { Faker::IDNumber.valid }
     author
     h_index { 0 }
-    citations_count { 0 }
-    publications_count { 0 }
   end
 end
