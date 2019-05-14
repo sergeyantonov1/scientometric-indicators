@@ -5,6 +5,8 @@ class Dropdown
     @_init()
 
   _init: ->
-    @$el.dropdown()
+    @$el.dropdown({
+      maxSelections: 5
+    })
 
 new Dropdown(el) for el in $(".ui.dropdown")
