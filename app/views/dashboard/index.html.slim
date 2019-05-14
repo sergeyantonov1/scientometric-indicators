@@ -2,7 +2,7 @@
   = simple_form_for :dashboard, method: :get do |f|
     = f.input :author_ids,
         collection: selectable_authors,
-        input_html: { class:"ui fluid dropdown selection multiple", multiple: true }
+        input_html: { class:"ui fluid search dropdown selection multiple", multiple: true }
     = f.input :profile_type,
       collection: Enumeration::CITATIONS_DATABASES,
       include_blank: false,
