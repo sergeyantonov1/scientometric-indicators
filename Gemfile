@@ -81,7 +81,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "faker"
   gem "jasmine", "> 2.0"
-  gem "jasmine-jquery-rails"
+  # gem "jasmine-jquery-rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.5"
   gem "rubocop", require: false
