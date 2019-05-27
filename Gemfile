@@ -49,6 +49,7 @@ gem "rollbar"
 gem "seedbank"
 gem "semantic-ui-sass"
 gem "sidekiq"
+gem "sidekiq-scheduler"
 gem "stackprof"
 
 group :staging, :production do

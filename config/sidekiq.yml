@@ -1,0 +1,8 @@
+# config/sidekiq.yml
+
+:schedule:
+  sync_authors:
+    every: "1.month"
+    class: SyncAuthors
+
+

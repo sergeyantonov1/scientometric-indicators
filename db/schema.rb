@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190325084551) do
+ActiveRecord::Schema.define(version: 20190527110217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20190325084551) do
     t.string "middle_name"
     t.integer "organization_id", null: false
     t.string "orcid"
+    t.datetime "synced_at"
     t.index ["orcid"], name: "index_authors_on_orcid"
     t.index ["organization_id"], name: "index_authors_on_organization_id"
   end
