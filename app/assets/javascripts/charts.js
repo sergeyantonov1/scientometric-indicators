@@ -1,3 +1,5 @@
+// app/assets/javascripts/charts.js
+
 var chart = document.getElementById('myChart')
 
 if (typeof(chart) != 'undefined' && chart != null)
@@ -17,4 +19,5 @@ if (typeof(chart) != 'undefined' && chart != null)
     }
   });
 }
+
 

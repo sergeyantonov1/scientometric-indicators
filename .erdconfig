@@ -4,3 +4,10 @@
 
 filename: doc/entity-relationship
 filetype: png
+attributes:
+  - content
+  - foreign_key
+  - primary_key
+orientation: horizontal
+only: [Organization, Author, AuthorProfile, PublicationsInfo]
+title: false
