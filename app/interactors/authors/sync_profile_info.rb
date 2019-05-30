@@ -20,10 +20,8 @@ module Authors
       Scopus::SyncProfileInfo.call(profile: profile).info
     end
 
-    def sync_woc_profile_info(profile)
-    end
-
-    def sync_elibrary_profile_info(profile)
+    def sync_wos_profile_info(profile)
+      Wos::SyncProfileInfo.call(profile: profile).info
     end
   end
 end

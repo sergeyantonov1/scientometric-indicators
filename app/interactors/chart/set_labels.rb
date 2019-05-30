@@ -1,3 +1,5 @@
+# app/interactors/chart/set_labels.rb
+
 module Chart
   class SetLabels
     include Interactor
@@ -21,3 +23,4 @@ module Chart
     end
   end
 end
+

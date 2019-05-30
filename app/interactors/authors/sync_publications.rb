@@ -21,10 +21,10 @@ module Authors
       Scopus::ParsePublications.call(profile: profile).profile_publications
     end
 
-    def sync_woc_publications(profile)
-    end
-
-    def sunc_elibrary_publications(profile)
+    def sync_wos_publications(profile)
+      Wos::ParsePublications.call(profile: profile).profile_publications
     end
   end
 end
+
+

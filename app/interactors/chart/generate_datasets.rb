@@ -26,3 +26,5 @@ module Chart
     end
   end
 end
+
+

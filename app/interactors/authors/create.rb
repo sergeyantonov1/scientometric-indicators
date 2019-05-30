@@ -1,3 +1,5 @@
+# app/interactors/authors/create.rb
+
 module Authors
   class Create
     include Interactor::Organizer
